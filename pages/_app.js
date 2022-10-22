@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
   return (
       <>
         <Head>
-          <title>{process.env.NEXT_PUBLIC_DATABASE_COLLECTION_NAME}</title>
+          <title>{process.env.NEXT_PUBLIC_TAB_NAME}</title>
         </Head>
       <Component {...pageProps} />
       </>
