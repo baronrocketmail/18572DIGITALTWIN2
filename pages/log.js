@@ -48,7 +48,7 @@ function BasicTable(props) {
     console.log(props.logObjArray)
     return (
         <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <Table sx={{}} aria-label="simple table">
                 <TableHead>
                     <TableRow>
                         <TableCell> </TableCell>
