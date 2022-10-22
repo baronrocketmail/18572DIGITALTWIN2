@@ -15,7 +15,7 @@ const firestore = getFirestore()
 ///  INITIALIZE FIREBASE and FIRESTORE
 /// FETCHING FUNCTIONS
 
-const allPaymentsCollection = collection(firestore, "/units/" + process.env.NEXT_PUBLIC_DATABASE_COLLECTION_NAME +"/payments")
+const allPaymentsCollection = collection(firestore, "/units/" + process.env.DATABASE_COLLECTION_NAME +"/payments")
 
 export async function fetchUnpaidObjArraySpecific(url) {
     const allUnpaidPaymentsCollection = query(allPaymentsCollection, where("url", "==", url))
@@ -100,7 +100,7 @@ export async function fetchUnpaidObjArrayPaths() {
 
 export async function fetchNotUnpaidObjArray(){
     return new Promise(function(resolve, reject) {
-        const notUnpaidQuery = query(collection(getFirestore(),"units/" + process.env.NEXT_PUBLIC_DATABASE_COLLECTION_NAME+"/payments"), where("status", "!=", "unpaid"))
+        const notUnpaidQuery = query(collection(getFirestore(),"units/" + process.env.DATABASE_COLLECTION_NAME+"/payments"), where("status", "!=", "unpaid"))
         getDocs(notUnpaidQuery).then(snapshot => {
             let notUnpaidArry = [];
             snapshot.docs.forEach(elem => notUnpaidArry.push(elem.data()))
@@ -110,7 +110,7 @@ export async function fetchNotUnpaidObjArray(){
 }
 
 export async function fetchPropertyInfoObj() {
-    const propertyInfoCollection = collection(firestore, "/units/" + process.env.NEXT_PUBLIC_DATABASE_COLLECTION_NAME +"/info")
+    const propertyInfoCollection = collection(firestore, "/units/" + process.env.DATABASE_COLLECTION_NAME +"/info")
     return new Promise(function(resolve, reject) {
         getDocs(propertyInfoCollection).then(snapshot => {
             let unpaidArry = [];
