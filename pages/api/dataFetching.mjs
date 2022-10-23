@@ -15,7 +15,7 @@ const firestore = getFirestore()
 ///  INITIALIZE FIREBASE and FIRESTORE
 /// FETCHING FUNCTIONS
 
-const allPaymentsCollection = collection(firestore, "/units/" + process.env.DATABASE_COLLECTION_NAME +"/payments")
+const allPaymentsCollection = collection(firestore, "/units/" + "18572 Cull Canyon Rd" +"/payments")
 
 export async function fetchUnpaidObjArraySpecific(url) {
     const allUnpaidPaymentsCollection = query(allPaymentsCollection, where("url", "==", url))
