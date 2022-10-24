@@ -100,7 +100,7 @@ export async function fetchUnpaidObjArrayPaths() {
 
 export async function fetchNotUnpaidObjArray(){
     return new Promise(function(resolve, reject) {
-        const notUnpaidQuery = query(collection(getFirestore(),"units/" + process.env.DATABASE_COLLECTION_NAME+"/payments"), where("status", "!=", "unpaid"))
+        const notUnpaidQuery = query(collection(getFirestore(),"units/" + "18572 Cull Canyon Rd"+"/payments"), where("status", "!=", "unpaid"))
         getDocs(notUnpaidQuery).then(snapshot => {
             let notUnpaidArry = [];
             snapshot.docs.forEach(elem => notUnpaidArry.push(elem.data()))
@@ -110,7 +110,7 @@ export async function fetchNotUnpaidObjArray(){
 }
 
 export async function fetchPropertyInfoObj() {
-    const propertyInfoCollection = collection(firestore, "/units/" + process.env.DATABASE_COLLECTION_NAME +"/info")
+    const propertyInfoCollection = collection(firestore, "/units/" + "18572 Cull Canyon Rd" +"/info")
     return new Promise(function(resolve, reject) {
         getDocs(propertyInfoCollection).then(snapshot => {
             let unpaidArry = [];

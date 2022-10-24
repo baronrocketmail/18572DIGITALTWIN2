@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
   return (
       <>
         <Head>
-          <title>{process.env.NEXT_PUBLIC_TAB_NAME}</title>
+          <title>18572 Cull Canyon Rd</title>
         </Head>
       <Component {...pageProps} />
       </>
