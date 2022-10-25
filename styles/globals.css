@@ -11,6 +11,10 @@ html{
   -webkit-font-smoothing: antialiased;
 }
 
+a:hover{
+    color: #4086ff
+}
+
 
 a{
   text-decoration: none;
@@ -161,6 +165,9 @@ button:disabled {
     width: 80vw;
     min-width: initial;
   }
+a:hover{
+      color: black;
+  }
 }
 
 @media only screen and (max-width: 833px) {
@@ -180,5 +187,8 @@ button:disabled {
     }
     a{
         font-size: 40px;
+    }
+a:hover{
+        color: black;
     }
 }
