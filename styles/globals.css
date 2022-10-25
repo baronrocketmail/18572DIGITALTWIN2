@@ -165,9 +165,6 @@ button:disabled {
     width: 80vw;
     min-width: initial;
   }
-a:hover{
-      color: black;
-  }
 }
 
 @media only screen and (max-width: 833px) {
@@ -187,8 +184,5 @@ a:hover{
     }
     a{
         font-size: 40px;
-    }
-a:hover{
-        color: black;
     }
 }
