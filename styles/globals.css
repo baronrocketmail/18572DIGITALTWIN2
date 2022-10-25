@@ -1,10 +1,10 @@
 @font-face {
-    font-family: Goldman Sans;
-    src: url("../public/GoldmanSans_W_Lt.woff2") format("woff2")
+    font-family: SF Pro;
+    src: url("../public/SF-Pro-Text-Light.woff2") format("woff2")
 }
 
 html{
-  font-family: Goldman Sans, sans-serif;
+  font-family: SF Pro;
   font-size: large;
   -webkit-tap-highlight-color: transparent;
   -webkit-text-size-adjust: 100%;
@@ -15,7 +15,7 @@ html{
 a{
   text-decoration: none;
   color: black;
-  font-size: 10vmin;
+  font-size: 70px;
   letter-spacing: -.005em;
   position: static;
   line-height: 1.25;
@@ -161,4 +161,18 @@ button:disabled {
     width: 80vw;
     min-width: initial;
   }
+}
+
+@media only screen and (max-width: 833px) {
+
+    a{
+        font-size: 50px;
+    }
+
+}
+
+@media only screen and (max-width: 419px) {
+    a{
+        font-size: 40px;
+    }
 }
