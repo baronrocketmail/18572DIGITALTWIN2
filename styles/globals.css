@@ -1,6 +1,6 @@
 @font-face {
     font-family: Goldman Sans;
-    src: url("../public/GoldmanSans_W_Rg.woff2") format("woff2")
+    src: url("../public/GoldmanSans_W_lt.woff2") format("woff2")
 }
 
 html{
@@ -9,16 +9,13 @@ html{
   -webkit-tap-highlight-color: transparent;
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
-
-  color: rgb(213,92,38);
-
 }
 
 
 a{
   text-decoration: none;
-  color: rgb(213,92,38);
-  font-size: 9.5vmin;
+  color: black;
+  font-size: 10vmin;
   letter-spacing: -.005em;
   position: static;
   line-height: 1.25;
