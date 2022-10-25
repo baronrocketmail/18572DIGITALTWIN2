@@ -10,12 +10,14 @@ html{
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
 
+  color: rgb(213,92,38);
+
 }
 
 
 a{
   text-decoration: none;
-  color: black;
+  color: rgb(213,92,38);
   font-size: 10vmin;
   letter-spacing: -.005em;
   position: static;
@@ -29,9 +31,9 @@ a{
   text-align: center;
 }
 
-a:hover{
-  color:#BF40BF;
-}
+/*a:hover{*/
+/*  color:#BF40BF;*/
+/*}*/
 
 .customize-fab{
   position: fixed;
