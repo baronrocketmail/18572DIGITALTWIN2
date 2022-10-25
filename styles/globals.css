@@ -1,8 +1,17 @@
+@font-face {
+    font-family: Goldman Sans;
+    src: url("../public/GoldmanSans_W_Rg.woff2") format("woff2")
+}
 
 html{
-  font-family: 'Roboto', sans-serif;
+  font-family: Goldman Sans, sans-serif;
   font-size: large;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+
 }
+
 
 a{
   text-decoration: none;
