@@ -9,6 +9,7 @@ import Paper from '@mui/material/Paper';
 import {fetchNotUnpaidObjArray, fetchUnpaidObjArrayforLog} from "./api/dataFetching.mjs";
 import NavLinks from "../Components/NavLinks";
 
+
 async function  formatNotUnpaidObjArrayForTable(){
     return new Promise(function(resolve, reject){
         let objArray = []
@@ -85,6 +86,8 @@ export default function Log(props){
             {console.log(props.objArray)}
             <NavLinks objArry = {props.objArray}/>
             <BasicTable objArry={props.logObjArray}/>
+
         </div>
     )
 }
+
