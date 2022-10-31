@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import {getFirestore, query, where, collection, getDocs} from "firebase/firestore";
+import {getFirestore, query, where, collection, getDocs, doc, getDoc} from "firebase/firestore";
 
 /// INITIALIZE fire FIREBASE and FIRESTORE
 const firebaseConfig = {
@@ -17,6 +17,16 @@ const firestore = getFirestore()
 
 const allPaymentsCollection = collection(firestore, "/units/" + "18572 Cull Canyon Rd" +"/payments")
 
+
+export async function fetchIdentifiers(typeStr){
+    const colRef = doc(firestore, "/units/18572 Cull Canyon Rd/info/info/auth/" + typeStr)
+    let identifiers = await getDoc(colRef)
+    identifiers = identifiers.data()
+    return new Promise(function(resolve, reject){
+        resolve(identifiers)
+    })
+}
+
 export async function fetchUnpaidObjArraySpecific(url) {
     const allUnpaidPaymentsCollection = query(allPaymentsCollection, where("url", "==", url))
     return new Promise(function(resolve, reject) {
@@ -28,6 +38,9 @@ export async function fetchUnpaidObjArraySpecific(url) {
     })
 
 }
+
+
+
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }

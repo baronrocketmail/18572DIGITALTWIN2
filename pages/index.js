@@ -16,6 +16,8 @@ export async function getStaticProps(){
     }
 }
 
+
+
 export default function Home(props) {
 
     console.log(21)

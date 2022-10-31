@@ -12,7 +12,7 @@ html{
 }
 
 a:hover{
-    color: #4086ff
+    color: #4086ff;
 }
 .contactButton{
     padding-top: 20px;
@@ -34,9 +34,6 @@ a{
   text-align: center;
 }
 
-/*a:hover{*/
-/*  color:#BF40BF;*/
-/*}*/
 
 .customize-fab{
   position: fixed;
@@ -47,6 +44,7 @@ a{
 .table{
   margin-bottom:8px;
 }
+
 
 form {
   margin-left: auto;
@@ -73,7 +71,7 @@ form {
 }
 
 /* Buttons and links */
-button {
+.button {
   background: #5469d4;
   font-family: Arial, sans-serif;
   color: #ffffff;
@@ -89,6 +87,8 @@ button {
   width: 100%;
 }
 
+
+
 .grid {
     display: flex;
     align-items: center;
@@ -102,6 +102,7 @@ button {
 }
 
 .card {
+    background: none;
     margin: 1rem;
     padding: 1.5rem;
     text-align: left;
@@ -130,11 +131,11 @@ button {
     font-size: 1.25rem;
     line-height: 1.5;
 }
-button:hover {
+.button:hover {
   filter: contrast(115%);
 }
 
-button:disabled {
+.button:disabled {
   opacity: 0.5;
   cursor: default;
 }
