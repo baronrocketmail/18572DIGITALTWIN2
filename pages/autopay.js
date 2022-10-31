@@ -59,7 +59,6 @@ export default function Autopay(props){
             signInWithEmailLink(auth, email, window.location.href)
             .then((result) => {
                 // Clear email from storage.
-                window.localStorage.removeItem('emailForSignIn');
                 // You can access the new user via result.user
                 // Additional user info profile not available via:
                 // result.additionalUserInfo.profile == null
@@ -71,7 +70,7 @@ export default function Autopay(props){
                 // Common errors could be invalid email and invalid or expired OTPs.
             });
         }
-    }, [])
+    }, )
     onAuthStateChanged(auth, (user) => {
         console.log(user)
         setUser(user)
