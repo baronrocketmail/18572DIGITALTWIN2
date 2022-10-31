@@ -71,7 +71,7 @@ export default function Autopay(props){
                 // Common errors could be invalid email and invalid or expired OTPs.
             });
         }
-    })
+    }, [])
     onAuthStateChanged(auth, (user) => {
         console.log(user)
         setUser(user)
