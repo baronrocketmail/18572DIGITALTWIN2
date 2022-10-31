@@ -107,8 +107,9 @@ export default function Autopay(props){
 function AutopaySignedInContent(){
     return(
             <>
-            <button onClick={()=> auth.signOut().then(console.log("signed out"))}> dd </button>
             <h1>you're way too much, too too much</h1>
+            <button onClick={()=> auth.signOut().then(console.log("signed out"))}> dd </button>
+            
             </>
     )
 }
