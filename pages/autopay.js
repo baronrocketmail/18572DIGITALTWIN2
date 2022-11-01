@@ -40,12 +40,14 @@ export default function Autopay(props){
     const [user, setUser] = useState(null)
 
     useEffect(() => {
-            if (isSignInWithEmailLink(auth, window.location.href)) {
-                let email = window.localStorage.getItem('emailForSignIn');
-                if (!email) email = window.prompt('Please provide your email for confirmation');
-                signInWithEmailLink(auth, email, window.location.href)
-            }
-    }, )
+       if (user === null) {
+           if (isSignInWithEmailLink(auth, window.location.href)) {
+               let email = window.localStorage.getItem('emailForSignIn');
+               if (!email) email = window.prompt('Please provide your email for confirmation');
+               signInWithEmailLink(auth, email, window.location.href)
+           }
+       }
+   }, )
 
     onAuthStateChanged(auth, (user) => {
         console.log(user)
