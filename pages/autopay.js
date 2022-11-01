@@ -18,6 +18,10 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
+import Chip from '@mui/material/Chip';
+import Paper from '@mui/material/Paper';
+import TagFacesIcon from '@mui/icons-material/TagFaces';
+
 export async function getStaticProps(){
 
     let emailAddresses = await fetchIdentifiers("email addresses")
@@ -325,7 +329,7 @@ function PositionedMenu() {
                     aria-expanded={open ? 'true' : undefined}
                     onClick={handleClick}
                     >
-                    Dashboard
+                    +5
                 </Button>
                 <Menu
                     id="demo-positioned-menu"
@@ -350,3 +354,54 @@ function PositionedMenu() {
             );
 }
 
+
+const ListItem = styled('li')(({ theme }) => ({
+    margin: theme.spacing(0.5),
+}));
+
+function ChipsArray() {
+    const [chipData, setChipData] = useState([
+        { key: 0, label: 'Angular' },
+        { key: 1, label: 'jQuery' },
+        { key: 2, label: 'Polymer' },
+        { key: 3, label: 'React' },
+        { key: 4, label: 'Vue.js' },
+        ]);
+
+    const handleDelete = (chipToDelete) => () => {
+        setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
+    };
+
+    return (
+            <Paper
+                elevation = {0}
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    flexWrap: 'wrap',
+                    listStyle: 'none',
+                    p: 0.5,
+                    m: 0,
+                }}
+                component="ul"
+                >
+                {chipData.map((data) => {
+                    let icon;
+
+                    if (data.label === 'React') {
+                        icon = <TagFacesIcon />;
+                    }
+
+                    return (
+                            <ListItem key={data.key}>
+                                <Chip
+                                    icon={icon}
+                                    label={data.label}
+                                    onDelete={data.label === 'React' ? undefined : handleDelete(data)}
+                                />
+                            </ListItem>
+                            );
+                })}
+            </Paper>
+            );
+}
