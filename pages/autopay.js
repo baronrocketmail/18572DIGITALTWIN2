@@ -15,6 +15,9 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import Typography from '@mui/material/Typography';
 
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+
 export async function getStaticProps(){
 
     let emailAddresses = await fetchIdentifiers("email addresses")
@@ -73,14 +76,14 @@ export default function Autopay(props){
 
 function AutopaySignedInContent(){
     return(
-            <div className={"staticCards"}>
+            <div className={"settings"}>
             <CustomizedSwitches/>
-            <h1>                                 </h1>
-            <h1>you're way too much, too too much</h1>
-            <button onClick={()=> auth.signOut().then(console.log("signed out"))}> dd </button>
+            <PositionedMenu/>
+            <Button  onClick={()=> auth.signOut()} variant="text">sign out</Button>
             </div>
     )
 }
+
 
 function announce2(){
     console.log(auth.currentUser)
@@ -94,7 +97,7 @@ function announce(z){
     const actionCodeSettings = {
         // URL you want to redirect back to. The domain (www.example.com) for this
         // URL must be in the authorized domains list in the Firebase Console.
-        url: 'http://localhost:3000/autopay',
+        url: 'https://18572cullcanyon.com/',
         // This must be true.
         handleCodeInApp: true,
     };
@@ -301,3 +304,49 @@ function CustomizedSwitches() {
             </FormGroup>
             );
 }
+
+
+function PositionedMenu() {
+    const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    return (
+            <div>
+                <Button
+                    id="demo-positioned-button"
+                    aria-controls={open ? 'demo-positioned-menu' : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={open ? 'true' : undefined}
+                    onClick={handleClick}
+                    >
+                    Dashboard
+                </Button>
+                <Menu
+                    id="demo-positioned-menu"
+                    aria-labelledby="demo-positioned-button"
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleClose}
+                    anchorOrigin={{
+                        vertical: 'top',
+                        horizontal: 'left',
+                    }}
+                    transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'left',
+                    }}
+                    >
+                    <MenuItem onClick={handleClose}>Profile</MenuItem>
+                    <MenuItem onClick={handleClose}>My account</MenuItem>
+                    <MenuItem onClick={handleClose}>Logout</MenuItem>
+                </Menu>
+            </div>
+            );
+}
+
