@@ -28,78 +28,38 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 
 
-
+function populateAuthButtons(obj){
+    let returnArray = []
+    for(let elem in obj) {
+        returnArray.push(<button onClick = {announce} className={"card"}> <p> {obj[elem]}</p></button> )
+    }
+    return returnArray
+}
 
 export default function Autopay(props){
-    /// INITIALIZE fire FIREBASE and FIRESTORE
-
     const [user, setUser] = useState(null)
 
     useEffect(() => {
-
-
-
-        if (isSignInWithEmailLink(auth, window.location.href)) {
-            // Additional state parameters can also be passed via URL.
-            // This can be used to continue the user's intended action before triggering
-            // the sign-in operation.
-            // Get the email if available. This should be available if the user completes
-            // the flow on the same device where they started it.
-            let email = window.localStorage.getItem('emailForSignIn');
-
-            console.log("email: ")
-
-            console.log(window.localStorage.getItem('emailForSignIn'))
-            if (!email) {
-                // User opened the link on a different device. To prevent session fixation
-                // attacks, ask the user to provide the associated email again. For example:
-                email = window.prompt('Please provide your email for confirmation');
+            if (isSignInWithEmailLink(auth, window.location.href)) {
+                let email = window.localStorage.getItem('emailForSignIn');
+                if (!email) email = window.prompt('Please provide your email for confirmation');
+                signInWithEmailLink(auth, email, window.location.href)
             }
-            // The client SDK will parse the code from the link for you.
-            signInWithEmailLink(auth, email, window.location.href)
-            .then((result) => {
-                // Clear email from storage.
-                // You can access the new user via result.user
-                // Additional user info profile not available via:
-                // result.additionalUserInfo.profile == null
-                // You can check if the user is new or existing:
-                // result.additionalUserInfo.isNewUser
-            })
-            .catch((error) => {
-                // Some error occurred, you can inspect the code: error.code
-                // Common errors could be invalid email and invalid or expired OTPs.
-            });
-        }
     }, )
+
     onAuthStateChanged(auth, (user) => {
         console.log(user)
         setUser(user)
     });
-    console.log(props.phoneNumbers)
-    console.log(props.emailAddresses)
 
-    let authChoices = []
-    let emails = props.emailAddresses
-    for(let elem in props.emailAddresses) {
-        authChoices.push(<button onClick = {announce} className={"card"}> <p> {props.emailAddresses[elem]}</p></button> )
-    }
-    for(let elem in props.phoneNumbers) {
-        authChoices.push(<button onClick = {announce2}  className={"card"}> <p> {props.phoneNumbers[elem]}</p></button> )
-    }
+    let authButtons = populateAuthButtons({...props.emailAddresses, ... props.phoneNumbers})
 
     return(
         <div>
             <NavLinks objArry={[{name: "<------", url: "/"}, {name: "autopay: inactive", url:"/"}]}/>
-
             <div className={"grid"}>
-
-                {user ?  <AutopaySignedInContent/> : authChoices}
-
-
-
-
+                {user ?  <AutopaySignedInContent/> : authButtons}
             </div>
-
         </div>
     )
 }
@@ -126,7 +86,7 @@ function announce(z){
     const actionCodeSettings = {
         // URL you want to redirect back to. The domain (www.example.com) for this
         // URL must be in the authorized domains list in the Firebase Console.
-        url: 'https://18572cullcanyon.com/autopay',
+        url: 'http://localhost:3000/autopay',
         // This must be true.
         handleCodeInApp: true,
     };
